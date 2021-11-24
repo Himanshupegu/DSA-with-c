@@ -1,4 +1,4 @@
-//Deleting the node at a particular position
+// Deleting the node at a particular position
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct node
@@ -14,15 +14,16 @@ node *addAtEnd(node *ptr, int data)
     ptr->link = temp;
     return temp;
 }
-void delPos(node **head, int position)
+node *delPos(node *head, int position)
 {
-    node *current = *head;
-    node *previous = *head;
-    if (*head == NULL)
+
+    node *current = head;
+    node *previous = head;
+    if (head == NULL)
         printf("List is already empty!");
     else if (position == 1)
     {
-        *head = current->link;
+        head = current->link;
         free(current);
         current = NULL;
     }
@@ -38,6 +39,7 @@ void delPos(node **head, int position)
         free(current);
         current = NULL;
     }
+    return head;
 }
 int main()
 {
@@ -52,7 +54,7 @@ int main()
     int position;
     printf("Enter the position you want to delete: ");
     scanf("%d", &position);
-    delPos(&head, position);
+    head = delPos(head, position);
     ptr = head;
     while (ptr != NULL)
     {

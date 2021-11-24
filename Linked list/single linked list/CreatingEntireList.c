@@ -1,4 +1,4 @@
-// Deleting the last node of an linked list.
+// Creating an entire linked list
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct node
@@ -6,7 +6,8 @@ typedef struct node
     int data;
     struct node *link;
 } node;
-node *addToEmpty(node *head, int data) // Function for inserting a node to the pointer head.
+
+node *addToEmpty(node *head, int data)
 {
     node *newNode = malloc(sizeof(node));
     newNode->data = data;
@@ -14,7 +15,7 @@ node *addToEmpty(node *head, int data) // Function for inserting a node to the p
     head = newNode;
     return head;
 }
-node *addAtEnd(node *head, int data) // Function for inserting a node at the end.
+node *addAtEnd(node *head, int data)
 {
     node *newNod = addToEmpty(head, data);
     node *tempPtr = head;
@@ -25,31 +26,7 @@ node *addAtEnd(node *head, int data) // Function for inserting a node at the end
     tempPtr->link = newNod;
     return head;
 }
-node *deleteAtLast(node *head) // Function for deleting the last node.
-{
-    if (head == NULL)
-        printf("List is already empty!");
-    else if (head->link == NULL)
-    {
-        free(head);
-        head = NULL;
-    }
-    else
-    {
-        node *temp = head;
-        node *temp2 = head;
-        while (temp->link != NULL)
-        {
-            temp2 = temp;
-            temp = temp->link;
-        }
-        temp2->link = NULL;
-        free(temp);
-        temp = NULL;
-    }
-    return head;
-}
-node *createList(node *head) // Function for creating an Linked list.
+node *createList(node *head)
 {
     int data, n;
     printf("Enter the number of nodes: ");
@@ -70,7 +47,7 @@ node *createList(node *head) // Function for creating an Linked list.
     }
     return head;
 }
-void printList(node *ptr) // Function for printing the linked list.
+void printList(node *ptr)
 {
     while (ptr != NULL)
     {
@@ -83,12 +60,8 @@ int main()
 {
     node *head = NULL;
     head = createList(head);
-    printf("\nBefore deleting the last node: ");
     printList(head);
-    head = deleteAtLast(head);
-    printf("\nAfter  deleting the last node: ");
-    printList(head);
+    printf("\nLinked is created successfully.");
     printf("\n\n");
-
     return 0;
 }

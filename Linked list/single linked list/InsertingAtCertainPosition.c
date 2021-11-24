@@ -1,4 +1,4 @@
-//Insertion a Node at a Certain Position
+// Insertion a Node at a Certain Position
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct node
@@ -14,20 +14,29 @@ node *addAtEnd(node *ptr, int data)
     ptr->link = temp;
     return temp;
 }
+node *addAtBeg(node *head, int data) // Function for inserting at the beginning
+{
+    node *ptr = malloc(sizeof(node));
+    ptr->data = data;
+    ptr->link = head;
+    head = ptr;
+    return head;
+}
 void addAtPos(node *head, int data, int pos)
 {
     node *ptr = head;
-    node *ptr2 = malloc(sizeof(node));
-    ptr2->data = data;
-    ptr2->link = NULL;
+    node *newNode = malloc(sizeof(node));
+    newNode->data = data;
+    newNode->link = NULL;
+
     pos--;
     while (pos != 1)
     {
         ptr = ptr->link;
         pos--;
     }
-    ptr2->link = ptr->link;
-    ptr->link = ptr2;
+    newNode->link = ptr->link;
+    ptr->link = newNode;
 }
 int main()
 {
@@ -44,6 +53,7 @@ int main()
     scanf("%d", &pos);
     printf("Enter the data you want to insert: ");
     scanf("%d", &data);
+    // getchar();
     addAtPos(head, data, pos);
 
     ptr = head;

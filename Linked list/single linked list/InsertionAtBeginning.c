@@ -1,4 +1,4 @@
-//Insertion at the beginning of the list
+// Insertion at the beginning of the list
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct node
@@ -14,14 +14,23 @@ node *addAtEnd(node *ptr, int data)
     ptr->link = temp;
     return temp;
 }
-node *addAtBeg(node *head, int data)
+node *addAtBeg(node *head, int data) // Function for inserting at the beginning
 {
     node *ptr = malloc(sizeof(node));
     ptr->data = data;
-    ptr->link = NULL;
     ptr->link = head;
     head = ptr;
     return head;
+}
+void printList(node *head)
+{
+    node *ptr = head;
+    while (ptr != NULL)
+    {
+        printf("%d -> ", ptr->data);
+        ptr = ptr->link;
+    }
+    printf("NUll");
 }
 int main()
 {
@@ -33,13 +42,11 @@ int main()
     ptr = addAtEnd(ptr, 96);
     ptr = addAtEnd(ptr, 69);
     ptr = addAtEnd(ptr, 90);
-    head = addAtBeg(head, 3);
-    ptr = head;
-    while (ptr != NULL)
-    {
-        printf("%d ", ptr->data);
-        ptr = ptr->link;
-    }
-
+    printf("\nBefore inserting at the beginning: ");
+    printList(head);
+    head = addAtBeg(head, 23);
+    printf("\nAfter  inserting at the beginning: ");
+    printList(head);
+    printf("\n\n");
     return 0;
 }
