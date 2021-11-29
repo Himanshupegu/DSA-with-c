@@ -34,8 +34,8 @@ void printList()
     for (int i = top; i >= 0; i--)
     {
         printf("%d ", stackArr[i]);
+        printf("\n");
     }
-    printf("\n");
 }
 int main()
 {
@@ -45,12 +45,12 @@ int main()
     push(4);
     push(5);
     // push(6);
-    printf("\nElements in the stack: ");
+    printf("\nElements in the stack\n");
     printList();
-    int data = pop();
+    // int data = pop();
     // printf("\nPop element is %d", data);
-    printf("\nElements after poping in the stack: ");
-    printList();
+    // printf("\nElements after poping in the stack: ");
+    // printList();
 
     return 0;
 }
