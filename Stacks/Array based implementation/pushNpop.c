@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #define MAX 5
 int top = -1;
-int stackArr[MAX];
+int stackArr[N];
 void push(int data)
 {
-    if (top == MAX - 1)
+    if (top == N - 1)
     {
         printf("\nStack overflow!\n");
         return;

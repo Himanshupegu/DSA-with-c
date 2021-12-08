@@ -1,11 +1,11 @@
 // arr[0] as the top
 #include <stdio.h>
 #define MAX 10
-int stackArray[MAX];
+int stackArray[N];
 int first = -1;
 int isFull()
 {
-    if (first == MAX - 1)
+    if (first == N - 1)
     {
         return 1;
     }
