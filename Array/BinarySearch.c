@@ -27,6 +27,7 @@ void binarySearch(int arr[], int size)
     {
         printf(" %d ", arr[i]);
     }
+    // Binary Search Algorithm
     int first, mid, last;
     first = 0;
     last = size - 1;

@@ -1,4 +1,4 @@
-//Insertion at the end of the list (Optimal one)
+// Insertion at the end of the list (Optimal one)
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct node
@@ -8,7 +8,7 @@ typedef struct node
 } node;
 node *addAtEnd(node *ptr, int data)
 {
-    node *temp = malloc(sizeof(node));
+    node *temp = (node *)malloc(sizeof(node));
     temp->data = data;
     temp->link = NULL;
     ptr->link = temp;

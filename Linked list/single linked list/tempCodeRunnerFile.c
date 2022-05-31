@@ -1,4 +1,2 @@
-while (ptr->link != NULL)
-    // {
-    //     ptr = ptr->link;
-    // }
+    // head->data = 45;
+    // head->link = NULL;

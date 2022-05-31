@@ -21,7 +21,7 @@ void insertion(int arr[], int size)
         printf("Enter the element you want to insert: ");
         scanf("%d", &element);
         for (int i = size - 1; i >= pos - 1; i--)
-        {
+        { 
             arr[i + 1] = arr[i];
         }
         arr[pos - 1] = element;

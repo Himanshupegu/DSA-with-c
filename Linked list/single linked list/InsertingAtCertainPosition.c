@@ -30,13 +30,20 @@ void addAtPos(node *head, int data, int pos)
     newNode->link = NULL;
 
     pos--;
-    while (pos != 1)
+    if (head == NULL)
     {
-        ptr = ptr->link;
-        pos--;
+        printf("List is empty!!");
     }
-    newNode->link = ptr->link;
-    ptr->link = newNode;
+    else
+    {
+        while (pos != 1)
+        {
+            ptr = ptr->link;
+            pos--;
+        }
+        newNode->link = ptr->link;
+        ptr->link = newNode;
+    }
 }
 int main()
 {
@@ -53,7 +60,6 @@ int main()
     scanf("%d", &pos);
     printf("Enter the data you want to insert: ");
     scanf("%d", &data);
-    // getchar();
     addAtPos(head, data, pos);
 
     ptr = head;

@@ -1,4 +1,4 @@
-//An element is called a peak element if its value is not smaller than the value of its adjacent elements(if they exists).
+// An element is called a peak element if its value is not smaller than the value of its adjacent elements(if they exists).
 #include <stdio.h>
 int peakElement(int arr[], int n)
 {
