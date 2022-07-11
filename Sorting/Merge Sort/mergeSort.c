@@ -25,7 +25,7 @@ void merge(int arr[], int lb, int mid, int ub)
   int k = i;
   int j = mid + 1;
 
-  while (i <= mid && j <= lb)
+  while (i <= mid && j <= ub)
   {
     if (arr[i] <= arr[j])
     {

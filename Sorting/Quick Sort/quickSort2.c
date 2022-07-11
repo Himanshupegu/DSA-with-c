@@ -9,7 +9,7 @@ void swap(int *i, int *j)
 }
 
 // Hoare Partition
-int partision(int arr[], int low, int high)
+int partition(int arr[], int low, int high)
 {
     int pivot = arr[low];
     int i = (low + 1);
@@ -42,7 +42,7 @@ void quickSort(int arr[], int low, int high)
 
     if (low < high)
     {
-        int prt = partision(arr, low, high);
+        int prt = partition(arr, low, high);
 
         quickSort(arr, low, prt - 1);
         quickSort(arr, prt + 1, high);

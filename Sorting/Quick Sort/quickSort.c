@@ -8,7 +8,7 @@ void swap(int *i, int *j)
 }
 
 // Lomuto Partition
-int partision(int arr[], int low, int high)
+int partition(int arr[], int low, int high)
 {
 
 	int pivot = arr[high];
@@ -24,14 +24,14 @@ int partision(int arr[], int low, int high)
 	}
 	swap(&arr[i + 1], &arr[high]);
 
-	return (i + 1);
+	return (i + 1);{2, 1, 5, 6, 3, 7, 8, 9, 10, 4};
 }
 void quickSort(int arr[], int low, int high)
 {
 
 	if (low < high)
 	{
-		int pt = partision(arr, low, high);
+		int pt = partition(arr, low, high);
 		quickSort(arr, low, pt - 1);
 		quickSort(arr, pt + 1, high);
 	}

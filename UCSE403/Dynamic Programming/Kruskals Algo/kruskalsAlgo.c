@@ -1,87 +1,82 @@
 #include <stdio.h>
+#define INF 32000
+#define V 6
 
-typedef struct node
+int graph[V][V] = {
+    {0, 3, 0, 0, 6, 5},
+    {3, 0, 1, 0, 0, 4},
+    {0, 1, 0, 6, 0, 4},
+    {0, 0, 6, 0, 8, 5},
+    {6, 0, 0, 8, 0, 2},
+    {5, 4, 4, 5, 2, 0}};
+
+int parent[V] = {0};
+
+int findParent(int a)
 {
-  int parent;
-  int rank;
-} dsuf;
-
-void kruskalsAlgo(struct dsuf, int V, int E){
-  
+  while (parent[a])
+  {
+    a = parent[a];
+  }
+  return a;
 }
 
-void sort(int Source[], int Destination[], int Weight[], int edges)
+int isCycle(int a, int b)
 {
-
-  for (int i = 0; i < edges - 1; i++)
+  if (a != b)
   {
-    int min = i;
-    for (int j = i; j < edges; j++)
-    {
-      if (Weight[j] < Weight[min])
-      {
-        min = j;
-      }
-    }
-    int temp;
-    if (min != i)
-    {
-      temp = Weight[i];
-      Weight[i] = Weight[min];
-      Weight[min] = temp;
-
-      temp = Source[i];
-      Source[i] = Source[min];
-      Source[min] = temp;
-
-      temp = Destination[i];
-      Destination[i] = Destination[min];
-      Destination[min] = temp;
-    }
+    parent[b] = a;
+    return 1;
   }
-}
-
-void printSortedEdges(int Source[], int Destination[], int Weight[], int edges)
-{
-  printf("\n\nSorting the weights in ascending order: \n\n");
-  for (int i = 0; i < edges; i++)
-  {
-    printf("\nSource[%d] -> Destination[%d] = Weight[%d]", Source[i], Destination[i], Weight[i]);
-  }
-}
-
-void printMST(int Source[], int Destination[], int Weight[], int edges)
-{
-  printf("\n\nMinimum Spanning Tree: \n\n");
-  for (int i = 0; i < edges; i++)
-  {
-    printf("\nSource[%d] -> Destination[%d] = Weight[%d]", Source[i], Destination[i], Weight[i]);
-  }
+  return 0;
 }
 
 int main()
 {
-  int vertices, edges;
-  printf("Enter the no. of vertices: ");
-  scanf("%d", &vertices);
-  printf("Enter the no. of edges: ");
-  scanf("%d", &edges);
-  int Source[edges], Destination[edges], Weight[edges];
-  struct node *dsuf = (struct node *)malloc(vertices * sizeof(struct node));
-  int dsuf[vertices];
-  for (int i = 0; i < vertices; i++)
+  int no_edge = 0;
+  int min, i, j, sum = 0;
+  int x, y, a, b;
+
+  for (int i = 0; i < V; i++)
   {
-    dsuf[i].parent = -1;
-    dsuf[i].rank = 0;
+    for (int j = 0; j < V; j++)
+    {
+      if (graph[i][j] == 0)
+      {
+        graph[i][j] = INF;
+      }
+    }
   }
 
-  for (int i = 0; i < edges; i++)
+  printf("Edge : Weight\n");
+
+  while (no_edge < V - 1)
   {
-    printf("Enter the Source[%d], Destination[%d], Weight[%d]: ", i + 1, i + 1, i + 1);
-    scanf("%d %d %d", &Source[i], &Destination[i], &Weight[i]);
+    min = INF;
+    for (int i = 0; i < V; i++)
+    {
+      for (int j = 0; j < V; j++)
+      {
+        if (min > graph[i][j])
+        {
+          min = graph[i][j];
+          x = a = i;
+          y = b = j;
+        }
+      }
+    }
+    a = findParent(a);
+    b = findParent(b);
+
+    if (isCycle(a, b) == 1)
+    {
+      sum += min;
+      printf("%d -> %d : %d\n", x, y, graph[x][y]);
+      no_edge++;
+    }
+    graph[x][y] = graph[y][x] = INF;
   }
-  sort(Source, Destination, Weight, edges);
-  printSortedEdges(Source, Destination, Weight, edges);
+  printf("Total cost of the graph %d\n", sum);
 
   return 0;
 }
